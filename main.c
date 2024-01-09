@@ -4,23 +4,21 @@
 #include <string.h>
 
 int main(void) {
-  char *name = "thorben";
+  int *x = malloc(3 * sizeof(int));
 
-  char *t = malloc(strlen(name) + 1);
-  if (t == NULL) {
+  if (x == NULL) {
     return 1;
   }
 
-  strcpy(t, name);
+  x[0] = 1;
+  x[1] = 2;
+  x[2] = 3;
 
-  if (strlen(t) > 0) {
-    t[0] = toupper(t[0]);
+  for (int i = 0; i < 3; i++) {
+    printf("%i\n", x[i]);
   }
 
-  printf("Name is %s\n", name);
-  printf("T is %s\n", t);
-
-  free(t);
+  free(x);
 
   return 0;
 }
