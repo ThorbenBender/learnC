@@ -1,37 +1,26 @@
-#include <stdbool.h>
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <sys/types.h>
-
-bool compare_string(char *s, char *t) {
-  if (strlen(s) != strlen(t)) {
-    return false;
-  }
-
-  int i = 0;
-
-  while (s[i] != '\0' && t[i] != '\0') {
-    if (s[i] != t[i]) {
-      return false;
-    }
-    i++;
-  }
-  return true;
-}
-
-typedef struct {
-  char *name;
-  int age;
-} person;
 
 int main(void) {
-  char t[20];
-  char s[20];
+  char *name = "thorben";
 
-  fgets(t, sizeof(t), stdin);
-  fgets(s, sizeof(s), stdin);
+  char *t = malloc(strlen(name) + 1);
+  if (t == NULL) {
+    return 1;
+  }
 
-  bool result = compare_string(s, t);
-  printf("Both strings are %s", result ? "equal" : "not equal");
+  strcpy(t, name);
+
+  if (strlen(t) > 0) {
+    t[0] = toupper(t[0]);
+  }
+
+  printf("Name is %s\n", name);
+  printf("T is %s\n", t);
+
+  free(t);
+
+  return 0;
 }
