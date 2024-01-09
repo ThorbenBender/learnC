@@ -4,11 +4,22 @@
 #include <string.h>
 
 int main(void) {
-  int scores[1024];
+  int *x;
+  int *y;
 
-  for (int i = 0; i < 1024; i++) {
-    printf("%i\n", scores[i]);
-  }
+  x = malloc(sizeof(int));
+  y = malloc(sizeof(int));
 
+  *x = 42;
+  *y = 13;
+
+  y = x;
+
+  *y = 13;
+
+  printf("X is %i and Y is %i", *x, *y);
+
+  free(x);
+  free(y);
   return 0;
 }
