@@ -3,23 +3,20 @@
 #include <stdlib.h>
 #include <string.h>
 
+void swap(int *a, int *b);
+
 int main(void) {
-  int *x;
-  int *y;
+  int x = 1;
+  int y = 2;
 
-  x = malloc(sizeof(int));
-  y = malloc(sizeof(int));
-
-  *x = 42;
-  *y = 13;
-
-  y = x;
-
-  *y = 13;
-
-  printf("X is %i and Y is %i", *x, *y);
-
-  free(x);
-  free(y);
+  printf("X is %i, y is %i\n", x, y);
+  swap(&x, &y);
+  printf("X is %i, y is %i\n", x, y);
   return 0;
+}
+
+void swap(int *a, int *b) {
+  int temp = *a;
+  *a = *b;
+  *b = temp;
 }
