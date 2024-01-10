@@ -6,20 +6,35 @@ typedef struct node {
   struct node *next;
 } node;
 
-int main() {
+int main(int argc, char *argv[]) {
   node *list = NULL;
-  node *n = malloc(sizeof(node));
-  n->number = 1;
-  n->next = NULL;
-  list = n;
-  n = malloc(sizeof(node));
-  n->number = 2;
-  n->next = list;
-  list = n;
+
+  for (int i = 1; i < argc; i++) {
+    int number = atoi(argv[i]);
+
+    node *n = malloc(sizeof(node));
+
+    if (n == NULL) {
+      return 1;
+    }
+    n->number = number;
+    n->next = NULL;
+
+    n->next = list;
+    list = n;
+  }
 
   node *point = list;
+
   while (point != NULL) {
-    printf("The node value is %i\n", point->number);
+    printf("Node is %i\n", point->number);
     point = point->next;
+  }
+
+  point = list;
+  while (point != NULL) {
+    node *next = point->next;
+    free(point);
+    point = next;
   }
 }
