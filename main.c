@@ -2,7 +2,9 @@
 #include <stdlib.h>
 
 typedef struct node {
-  int number;
-  struct node *left;
-  struct node *right;
+  char *name;
+  char *number;
+  struct node *next;
 } node;
+
+int main(void) { node *table[26]; }
