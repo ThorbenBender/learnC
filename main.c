@@ -1,22 +1,15 @@
-#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
-void swap(int *a, int *b);
+typedef struct node {
+  int number;
+  struct node *next;
+} node;
 
-int main(void) {
-  int x = 1;
-  int y = 2;
-
-  printf("X is %i, y is %i\n", x, y);
-  swap(&x, &y);
-  printf("X is %i, y is %i\n", x, y);
-  return 0;
-}
-
-void swap(int *a, int *b) {
-  int temp = *a;
-  *a = *b;
-  *b = temp;
+int main() {
+  node *list = NULL;
+  node *n = malloc(sizeof(node));
+  n->number = 1;
+  n->next = NULL;
+  list = n;
 }
